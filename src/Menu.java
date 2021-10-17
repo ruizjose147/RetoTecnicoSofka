@@ -21,16 +21,21 @@ public class Menu {
                                 "\n1. Iniciar Ronda" +
                                 "\n2. mostrar lista" +
                                 "\n0. Salir");
-                        Scanner selection = new Scanner(System.in);
-                        int firstSelection = selection.nextInt();
+                        int firstSelection = consola.nextInt();
                         switch (firstSelection){
                             case 1:
-                                Scanner nombre = new Scanner(System.in);
-                                System.out.println("Por favor dime como te llamas");
-                                String nombreUsuario = nombre.nextLine();
-                                juego.iniciarJuego(nombreUsuario);
+
+                                Scanner scanner2 = new Scanner(System.in);
+                                System.out.println("Ingrese su nombre de usuario");
+                                String nombreUsuario = scanner2.nextLine();
+                                persona.agregaUsuario(nombreUsuario);
+                               int valor=juego.iniciarJuego(nombreUsuario);
+                               if(valor==0){
+                                   break;
+                               }
                                 break;
                             case 2:
+
                                 persona.desplegarUsuarios();
                                 break;
                             case 0:

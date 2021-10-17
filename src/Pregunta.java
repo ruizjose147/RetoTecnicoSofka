@@ -27,8 +27,11 @@ public class Pregunta {
         this.correcta = correcta;
         if(correcta.equalsIgnoreCase(usuario))
             return "respuesta correcta";
+        if(usuario.equalsIgnoreCase("R")){
+           return "El usuario se retira";
+        }
         else
-            return "Respuesta incorrecta " + "\n NO GANASTE PUNTOS";
+            return "Respuesta incorrecta";
     }
 
     public String getPregunta() {

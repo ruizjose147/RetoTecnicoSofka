@@ -12,6 +12,10 @@ public class Juego {
             this.puntajeFinal=0;
             return 0;
         }
+        if(nivelUno==2){
+            this.puntuacion(usuario,this.puntajeFinal);
+            return 0;
+        }
         this.puntajeFinal+=100;
         int nivelDos=this.nivelDos();
         if(nivelDos==0){
@@ -19,7 +23,12 @@ public class Juego {
             return 0;
 
         }
-        this.puntajeFinal+=150;
+        if(nivelDos==2){
+            this.puntajeFinal+=0;
+            this.puntuacion(usuario,this.puntajeFinal);
+            return 0;
+        }
+        else {this.puntajeFinal+=150;}
         this.puntuacion(usuario,this.puntajeFinal);
         return 1;
     }
@@ -35,7 +44,8 @@ public class Juego {
         System.out.println(resultado);
         if(resultado.equalsIgnoreCase("Respuesta incorrecta"))
             return 0;
-
+        else if(resultado.equalsIgnoreCase("El usuario se retira")){
+            return 2;}
         return 1;
     }
 
@@ -47,13 +57,20 @@ public class Juego {
         Pregunta preguntaDos = new Pregunta();
         String resultado = preguntaDos.evaluarRespuesta(segundaPregunta, respuesta);
         System.out.println(resultado);
-        if(resultado.equalsIgnoreCase("Respuesta incorrecta"))
-            return 0;
-
+        if(resultado.equalsIgnoreCase("Respuesta incorrecta")){
+            return 0;}
+        else if(resultado.equalsIgnoreCase("El usuario se retira")){
+            return 2;}
         return 1;
     }
 
     public void puntuacion(String usuario, int puntajeFinal){
         System.out.println(usuario + " Tu puntaje fue de: " + puntajeFinal);
+    }
+
+    public static void main(String[] args) {
+        Juego juego = new Juego();
+        int nivel = juego.nivelDos();
+        System.out.println(nivel);
     }
 }

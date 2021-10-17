@@ -20,14 +20,23 @@ public class Persona {
         this.usuario = usuario;
     }
 
-
-    public List agregaUsuario() {
-        Scanner scanner = new Scanner(System.in);
+    public String nombreUsuraio(){
+        Scanner scanner2 = new Scanner(System.in);
         System.out.println("Ingrese su nombre de usuario");
-        String nombreUsuario = scanner.nextLine();
-        this.listPeronas.add(nombreUsuario);
-        return listPeronas;
+        String nombreUsuario = scanner2.nextLine();
+        return nombreUsuario;
     }
+
+    public void agregaUsuario(String nombre) {
+        int tamañoList=listPeronas.size();
+         if(listPeronas.contains(nombre)){
+                System.out.println("El usuario ya esta registrado");
+            }
+         else {
+             listPeronas.add(nombre);
+         }
+
+        }
 
     public void desplegarUsuarios(){
         List<String> listaDeplegable=this.listPeronas;
@@ -36,12 +45,20 @@ public class Persona {
         }
         int contador =1;
         for (String usuario:listaDeplegable){
-            System.out.println(contador + usuario);
-            contador=+1;
+            System.out.println(contador + ": "+ usuario);
+            contador+=1;
         }
     }
 
     public String getUsuario() {
         return usuario;
+    }
+
+    public static void main(String[] args) {
+        Persona persona = new Persona();
+        persona.agregaUsuario("Jose");
+        persona.agregaUsuario("Richard");
+
+        System.out.println(persona.listPeronas);
     }
 }
